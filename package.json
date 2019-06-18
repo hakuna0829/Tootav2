@@ -1,0 +1,22 @@
+{
+  "name": "gatepass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd angular-src  && cd .. && node app",
+    "go_angular": "cd angular-src",
+    "start-a": "cd angular-src && ng serve --watch",
+    "deploy": "cd angular-src && ng build --prod --env=prod && cd .. && git add . && git commit -m 'deploy' && git push heroku master --force && git push origin master",
+    "staging": "cd angular-src && ng build && cd .. && git add . && git commit -m 'done' && git push staging master"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.4"
+  }
+}
