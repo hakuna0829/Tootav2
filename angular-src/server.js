@@ -13,7 +13,8 @@ app.get('/category', function (req, res) {
   var jobTitle = req.query.title;
 
   //Establish Connection
-  MongoClient.connect('mongodb://localhost:27017', function (err, database) {
+  //MongoClient.connect('mongodb://localhost:27017', function (err, database) {
+    MongoClient.connect('mongodb+srv://tootavDBuser1:YgI7igGX0xrHxq6g@tootavmdb1-enu7g.gcp.mongodb.net/test?retryWrites=true&w=majority', function (err, database) {
     if (err)
       throw err
     else {
@@ -53,19 +54,20 @@ app.get('/state', function (req, res) {
   var jobLocation = req.query.state;
 
   //Establish Connection
-  MongoClient.connect('mongodb://localhost:27017', function (err, database) {
+  MongoClient.connect('mongodb+srv://tootavDBuser1:YgI7igGX0xrHxq6g@tootavmdb1-enu7g.gcp.mongodb.net/test?retryWrites=true&w=majority', function (err, database) {
     if (err)
       throw err
     else {
       db = database.db('Indeed');
 
       console.log('Connected to MongoDB');
-      db.collection("Indeed_Jobs").find({
+      db.collection("Indeed_Jobs").find(
+        {
         state: {
           $regex: ".*" + jobLocation + ".*",
           $options: 'i'
-        }
-      }).toArray(function (err, result) {
+        }}
+      ).toArray(function (err, result) {
         if (err) throw err;
         //console.log(result);
         res.send(result)
@@ -84,7 +86,7 @@ app.get('/searchJon', function (req, res) {
   console.log(jobTitle)
 
   //Establish Connection
-  MongoClient.connect('mongodb://localhost:27017', function (err, database) {
+  MongoClient.connect('mongodb+srv://tootavDBuser1:YgI7igGX0xrHxq6g@tootavmdb1-enu7g.gcp.mongodb.net/test?retryWrites=true&w=majority', function (err, database) {
     if (err)
       throw err
     else {
